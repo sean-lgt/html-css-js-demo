@@ -1,0 +1,205 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* 至关重要:网格轨道 */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-row: 200px 200px 200px;
+} */
+
+/* repeat() 辅助函数 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-row: 200px 200px 200px;
+} */
+
+/* auto fill 关键字 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-row: repeat(3, 200px);
+} */
+
+
+/* fr 关键字 */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 1fr 2fr;
+  grid-row: repeat(3, 200px);
+} */
+
+/* minmax 函数 */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 1fr minmax(400px, 1fr);
+  grid-row: repeat(3, 200px);
+} */
+
+/* auto 关键字 */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px auto 200px;
+  grid-row: repeat(3, 200px);
+} */
+
+/* 网格间距 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  row-gap: 10px;
+  column-gap: 10px;
+  gap: 10px 10px;
+} */
+
+/* gird-template-areas 属性 */
+
+/* gird-auto-flow 排放顺序 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 10px 10px;
+  grid-auto-flow: column;
+} */
+
+/* 单元格内容排列方式 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 10px 10px;
+  justify-items: center;
+} */
+
+/* 内容区域的排列方式 */
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 10px 10px;
+  justify-content: center;
+} */
+
+/* 设置多余网格 grid-auto-rows */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-rows: 200px 200px;
+  grid-auto-rows: 50px;
+} */
+
+
+/* grid-template-areas */
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  grid-template-areas: 'a a a'
+    'b b c'
+    'e e c';
+  gap: 10px 10px;
+} */
+
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px;
+  gap: 10px 10px;
+}
+
+
+.item {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+.item-1 {
+  background-color: #55efc4;
+}
+
+/* 项目属性 1. 指定项目位置 */
+.item-1 {
+  background-color: #55efc4;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-column-end: span 2;
+}
+
+/* 使用 z-index 提升层级 */
+/* .item-1 {
+  background-color: #55efc4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  z-index: 1;
+} */
+
+/* grid-area属性 */
+/* .item-1 {
+  grid-area: c;
+  background-color: #55efc4;
+} */
+
+/* 网格内容排列方式 */
+.item-1 {
+  background-color: #55efc4;
+  justify-self: start;
+  justify-self: center;
+  justify-self: end;
+  justify-self: stretch;
+}
+
+
+
+.item-2 {
+  background-color: #81ecec;
+}
+
+.item-3 {
+  background-color: #74b9ff;
+}
+
+/* .item-3 {
+  grid-row: 1 / 4;
+  grid-column: 2 / 3;
+  background-color: #74b9ff;
+} */
+
+.item-4 {
+  background-color: #a29bfe;
+}
+
+.item-5 {
+  background-color: #00b894;
+}
+
+.item-6 {
+  background-color: #0984e3;
+}
+
+.item-7 {
+  background-color: #6c5ce7;
+}
+
+.item-8 {
+  background-color: #fab1a0;
+}
+
+.item-9 {
+  background-color: #fdcb6e;
+}
+
+.item-10 {
+  background-color: #fd79a8;
+}
+
+作者：小丞同学 链接：https: //juejin.cn/post/6974633866858348581
+来源：稀土掘金 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

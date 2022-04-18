@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gird网格布局</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <!-- 
+    - 网格布局 Grid 是最强大的 CSS 布局方案
+    - 将网页划分成一个个网格，可以任意组合不同的网格
+    - Gird 布局与 Flex 布局有一定的相似性，都可以指定容器内部多个项目的位置
+    - Flex 布局是轴线布局，只能指定项目针对轴线的位置，可以看作是一维布局
+    - Gird 布局则是将容器划分成 行 和 列，产生单元格，然后指定项目所在单元格，可以看作是二维布局，比 Flex 强大
+    -
+    - 需要了解基本的概念
+    - 容器和项目
+    - 行和列
+    - 单元格
+    - 网格线
+    - 
+
+    - display:gird 为一个容器采用网格布局模式，容器子项目中的float、display:inline-block、display:
+    -         gird 生个一个块级网格  inline-grid 生个一个行级网格
+    - 
+    -
+    - 至关重要:网格轨道
+    - gird-template-columns 定义每一列的宽度
+    - gird-template-row 定义每一行的高度
+    -
+    - 辅助属性
+    - repeat()  当我们需要写多行多列时，使用 repeat() 函数可以简化重复值，接受两个参数，一时重复的次数，二是所要重复的值
+    - grid-tempalte-clumns:repeat(3,200px)
+    -
+    - auto-fill 关键字
+    - 表示自动填充，让一行或者一列中尽可能得容纳更多的单元格
+    - 当我们只需要确定列宽或者行高，而不用理由多少列时，就可以使用它
+    -  grid-template-columns: repeat(auto-fill, 200px)
+    -
+    - fr 关键字
+    - fr 单位代表网格容器中可用空间的一等份
+    - grid-template-columns: 200px 1fr 2fr
+    -
+    - minmax() 函数
+    - minmax() 函数产生一个长度范围，表示长度就在这个范围之中都可以应用到网格项目中，它接受两个参数，最小值和最大值
+    - grid-template-columns: 200px 1fr minmax(400px,1fr);
+    -
+    - auto 关键字
+    - 设置 auto 后，将由浏览器自行决定长度，尽可能的沾满剩余空间，除非有其他设置，例如有 min-width 之类的，利用这个关键字 就可以轻松实现三列或者两列布局
+    - grid-template-columns: 200px auto 200px;
+    -
+    - 网格线
+    - gird 布局叫做网格布局，那自然少不了网格线的存在，使用方括号，指定一根网格线的名字，方便以后做定位时使用
+    - grid-template-columns: [c1] 200px [c2] auto [c3] 200px [c4];
+    - grid-template-rows:  [r1] 200px [r2] auto [r3] 200px [r4];
+    -
+    -
+    - 
+    - 网格间距 row-gap column-gap
+    - row-gap: 10px; 行与行的间隔
+    - column-gap 列与列的间隔
+    - 简写  gap: 10px 10px;
+    -
+    -
+    - 
+    - gird-template-areas 属性 
+    -
+    -
+    -
+    - gird-auto-flow 排放顺序
+    - gird-auto-flow：row; 默认是先行后列排列
+    - gird-auto-flow:column; 先列后行
+    - row dense 和 column dense 特殊属性
+    - 当某个项目拉长时，会有一行放不下的情况，使用改属性可以尽可能填满表格
+    -
+    -
+    -
+    - 单元格内容排列方式
+    - justify-items 属性设置单元格内容的水平位置
+    - align-item 属性设置单元格的垂直位置
+    - 简写方式 place-items 
+    -
+    -
+    -
+    - 内容区域的排列方式
+    - justify-content 定义整个内容区域再容器的水平位置
+    - align-content 属性是定义整个内容区域的垂直位置
+    -
+    -
+    - 设置多余网格
+    - 网格有显式网格和隐式网格，显式网格通过 grid-template-clolumns 和 grid-template-row 设置
+    - 隐式网格通过 gird-auto-columns 和 grid-auto-rows属性设置
+    -  grid-auto-rows: 50px;
+    -
+    -
+    -
+    -
+    - 重点：项目属性
+    - -指定项目位置
+    - grid-column-start 左边框所在的崔志网线格
+    - grid-column-end 右边框所在的垂直网格线
+    - grid-row-start 上边框所在的水平网格线
+    - grid-row-end 下边框所在的水平网格线
+    - 备注：也可以使用 span 关键字来实现占2个网格的效果，有跨越的意思
+    -
+    -
+    - grid-area 属性 与 grid-template-areas属性
+    - 
+    -
+    - 网格内容排列方式
+    - justify-self 设置单元格内容的水平位置
+    - align-self 设置单元格内容的垂直位置
+    - start end center stretch
+    -
+   -->
+
+  <div class="container">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+    <div class="item item-6">6</div>
+    <div class="item item-7">7</div>
+    <div class="item item-8">8</div>
+    <div class="item item-9">9</div>
+    <!-- <div class="item item-10">10</div> -->
+  </div>
+
+</body>
+
+</html>
