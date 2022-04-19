@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃效果</title>
+    <style>
+        body {
+            height: 100vh;
+            background-image: url("https://qn.huat.xyz/mac/20211203155112.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box {
+            flex-direction: column;
+            position: relative;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, .5);
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://qn.huat.xyz/mac/20211203155112.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="flex">
+    <!-- 
+      在元素的背后，叠加一张同样的图片，利用 background-attachment:fixed 将叠加在元素下面的图片定位到与背景相同的坐标，再使用 filter:blur 对其进行模糊处理即可
+   -->
+    <div class="flex box">
+        <p>background-attachment:fixed</p>
+        <p>filter:blur(10px)</p>
+    </div>
+
+</body>
+
+</html>
