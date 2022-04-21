@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS修改css变量</title>
+  <style>
+    :root {
+      --theme-color: #0096ff;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .app {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 60px;
+    }
+
+    .inputText {
+      width: 300px;
+      height: 40px;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+
+    .confirm-btn {
+      margin: 20px 0;
+      width: 100px;
+      height: 40px;
+      background-color: #0096ff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .confirm-btn:active {
+      opacity: .85;
+    }
+
+    .content {
+      width: 400px;
+      height: 400px;
+      background-color: var(--theme-color);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <input class="inputText" id="inputText" type="text" placeholder="请输入颜色值">
+    <button id="confirmBtn" class="confirm-btn">确定</button>
+    <div class="content"></div>
+  </div>
+  <script>
+    const confirmBtnEle = document.getElementById('confirmBtn')
+    const inputTextEle = document.getElementById('inputText')
+    const checkIsColor = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/;
+    confirmBtnEle.onclick = function() {
+      console.log(inputTextEle.value)
+      const flag = checkIsColor.test(inputTextEle.value)
+      if (!flag) {
+        alert("请输入正确的颜色值")
+        return false
+      }
+      //更改CSS变量
+      document.documentElement.style.setProperty('--theme-color', inputTextEle.value);
+    }
+  </script>
+</body>
+
+</html>
