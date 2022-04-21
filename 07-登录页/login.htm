@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" Content="text/html;charset=gb2312" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="./css/vant@2.12.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>登录</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app" class="main login" v-cloak>
+        <div class="login-title">账号登录</div>
+        <div class="login-wrapper">
+            <van-field maxlength="20" v-model="loginForm.name" clearable placeholder="请输入账号"></van-field>
+            <van-field maxlength="20" v-model="loginForm.password" clearable placeholder="请输入密码"></van-field>
+            <div class="login-btn">
+                <van-button color="#fd5d38" :disabled="isDisabledBtn" @click="handleLogin">登录</van-button>
+            </div>
+        </div>
+        <div class="login-tips">
+            <van-divider>其他登录方式</van-divider>
+            <div class="other-login">
+                <img src="./images/login-wx@3x.png" class="login-img" @click="handleOtherLogin" />
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script src="./js/babel.min.js"></script> -->
+<script src="./js/vue@2.6.min.js"></script>
+<script src="./js/vant@2.12.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script>
+    var jq = jQuery.noConflict();
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isDisabledBtn: true,
+            loginForm: {
+                name: '',
+                password: ''
+            }
+        },
+        mounted() {
+
+        },
+        methods: {
+            // 登录操作
+            handleLogin() {
+                const _this = this;
+                if (this.loginForm.name == '' || this.loginForm.password == '') {
+                    vant.Toast.fail("请完整输入账号和密码");
+                    return false;
+                }
+                vant.Toast.loading({
+                    duration: 0, // 持续展示 toast
+                    message: '登录中...',
+                    forbidClick: true
+                });
+                jq.ajax({
+                    type: "GET", //get或者post
+                    dataType: 'JSON',
+                    url: "", //请求的地址
+                    data: _this.loginForm,
+                    success: function(res) {
+                        vant.Toast.clear();
+                        if (res.code == 200) {
+                            // 登录成功，直接跳转页面
+                        } else {
+                            // 接口报错 弹错误信息
+                            vant.Toast.fail(res.msg);
+                        }
+                    },
+                    error: function() {
+                        vant.Toast.clear();
+                        vant.Toast.fail("系统异常！");
+                    }
+
+                })
+            },
+            // 点击其他方式登录
+            handleOtherLogin() {
+                // 直接调用微信静默授权？
+            },
+        },
+        // 监听表单数据的变化
+        watch: {
+            loginForm: { //深度监听，可监听到对象、数组的变化
+                handler(val, oldVal) {
+                    if (val.name !== '' && val.password !== '') {
+                        // 有输入值了
+                        this.isDisabledBtn = false
+                    } else {
+                        this.isDisabledBtn = true
+                    }
+                },
+                deep: true
+            }
+        }
+    });
+</script>
+
+</html>
