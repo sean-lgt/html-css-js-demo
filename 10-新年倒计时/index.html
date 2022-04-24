@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>新年倒计时</title>
+  <meta name="keywords" content="新年倒计时，倒计时">
+  <meta name="description" content="新年倒计时！">
+  <style type="text/css">
+    @media (min-width: 768px) {
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: Helvetica, Helvetica Neue, Tahoma, Arial, PingFangSC-Regular, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+        background: url('static/images/bg.jpg') no-repeat center 0;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+      }
+
+      .gn_box {
+        width: 100%;
+        padding: 15% 0 0;
+        margin: 0 auto;
+      }
+
+      .gn_box h1 {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 70px;
+        font-weight: 550;
+        text-align: center;
+        color: #FFA500;
+      }
+
+      .gn_box h4 {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: #000000;
+      }
+
+      .gn_box .HotDate {
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        font-size: 65px;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .HotDate span {
+        /*color: #FFA500;*/
+      }
+
+      .footer {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: Helvetica, Helvetica Neue, Tahoma, Arial, PingFangSC-Regular, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+        background: url('static/images/mobile.jpg') no-repeat center 0;
+        background-color: #B22222;
+        background-repeat: repeat-y;
+        background-size: 100% auto;
+        background-attachment: fixed;
+      }
+
+      .gn_box {
+        width: 100%;
+        height: 300px;
+        margin-top: 50%;
+      }
+
+      .gn_box h1 {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+        color: #FFA500;
+      }
+
+      .gn_box h4 {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: center;
+        color: #000000;
+      }
+
+      .gn_box .HotDate {
+        width: 100%;
+        height: 100px;
+        line-height: 60px;
+        font-size: 25px;
+        font-weight: 250;
+        text-align: center;
+      }
+
+      .footer {
+        display: none;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 50px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+  </style>
+  <link rel="stylesheet" href="static/css/deng.css" />
+  <script type="text/javascript" src="static/js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="gn_box">
+    <h1>2023年春节倒计时</h1>
+    <h4>2023年春节时间：2023年01月22日 星期日 (癸卯年（兔年）正月初一)</h4>
+    <h4>目前距离2023年春节过年还有</h4>
+    <div id="CountMsg" class="HotDate">
+      <span id="t_d">00</span> 天
+      <span id="t_h">00</span> 时
+      <span id="t_m">00</span> 分
+      <span id="t_s">00</span> 秒
+    </div>
+    <div class="footer">
+    </div>
+    <div class="deng-box1">
+      <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+          <div class="deng-b">
+            <div class="deng-t">福</div>
+          </div>
+        </div>
+        <div class="shui shui-a">
+          <div class="shui-c"></div>
+          <div class="shui-b"></div>
+        </div>
+      </div>
+    </div>
+    <div class="deng-box2">
+      <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+          <div class="deng-b">
+            <div class="deng-t">福</div>
+          </div>
+        </div>
+        <div class="shui shui-a">
+          <div class="shui-c"></div>
+          <div class="shui-b"></div>
+        </div>
+      </div>
+    </div>
+    <div class="deng-box3">
+      <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+          <div class="deng-b">
+            <div class="deng-t">福</div>
+          </div>
+        </div>
+        <div class="shui shui-a">
+          <div class="shui-c"></div>
+          <div class="shui-b"></div>
+        </div>
+      </div>
+    </div>
+    <div class="deng-box4">
+      <div class="deng">
+        <div class="xian"></div>
+        <div class="deng-a">
+          <div class="deng-b">
+            <div class="deng-t">福</div>
+          </div>
+        </div>
+        <div class="shui shui-a">
+          <div class="shui-c"></div>
+          <div class="shui-b"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function getRTime() {
+      var EndTime = new Date('2023/01/22 00:00:00');
+      var NowTime = new Date();
+      if (NowTime.getTime() > EndTime.getTime()) {
+        EndTime = new Date('2023/01/22 00:00:00');
+      }
+      var t = EndTime.getTime() - NowTime.getTime();
+      var d = Math.floor(t / 1000 / 60 / 60 / 24);
+      var h = Math.floor(t / 1000 / 60 / 60 % 24);
+      var m = Math.floor(t / 1000 / 60 % 60);
+      var s = Math.floor(t / 1000 % 60);
+      if (h < 10) h = '0' + h;
+      if (m < 10) m = '0' + m;
+      if (s < 10) s = '0' + s;
+
+      document.getElementById("t_d").innerHTML = d;
+      document.getElementById("t_h").innerHTML = h;
+      document.getElementById("t_m").innerHTML = m;
+      document.getElementById("t_s").innerHTML = s;
+    }
+    setInterval(getRTime, 1000);
+  </script>
+  <script src="static/js/public.js"></script>
+  <script type="text/javascript">
+    // $(function () {
+    //     var ip = "";
+    //     send("https://api.ipify.org/?format=json", "GET", {}, function (res) {
+    //         ip = res.ip;
+    //         info(ip);
+    //     });
+
+    //     function info(ip) {
+    //         var user_agent = navigator.userAgent;
+    //         var language = (navigator.language || navigator.browserLanguage).toLowerCase();
+    //         // 系统信息
+    //         var obj_os = getOsInfo();
+    //         var os = obj_os.name + "(" + obj_os.version + ")";
+    //         var uuid = getUuid();
+    //         var appVersion = getExplore();
+    //         var domainName = window.location.host || document.domain;
+
+    //         // console.log("浏览器(user_agent):" + user_agent);
+    //         // console.log("客户端(ip):" + ip);
+    //         // console.log("浏览器语言(language):" + language);
+    //         // console.log("操作系统(os):" + os);
+    //         // console.log("uuid:" + uuid);
+    //         // console.log("浏览器版本号(appVersion):" + appVersion);
+    //         // console.log("域名(domain):" + domainName);
+
+    //         send("https://sys.scarpebay.cn/api/ip/put_ip", "GET", {
+    //             ip,
+    //             user_agent,
+    //             language,
+    //             os,
+    //             uuid,
+    //             domainName,
+    //             appVersion
+    //         }, function (res) {
+    //             console.log(res);
+    //         });
+    //     }
+
+    // });
+  </script>
+</body>
+
+</html>
