@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义光标</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: #4776e6;
+      background: linear-gradient(to right, #4476e6, #8e54e9);
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+
+    .title {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #d45448;
+      margin-right: 10px;
+      color: #fff;
+      font-size: 1.4em;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .title-image-cursor {
+      background-color: #1da1f2;
+      cursor: url(https://s1.ax1x.com/2022/04/24/Lh4yz8.png), auto;
+    }
+
+    .title-emoji-cursor {
+      background-color: #4267b2;
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚀</text></svg>"), auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="title">
+      Default
+    </div>
+    <div class="title title-image-cursor">
+      Image
+    </div>
+    <div class="title title-emoji-cursor">
+      Emoji
+    </div>
+  </div>
+</body>
+
+</html>
