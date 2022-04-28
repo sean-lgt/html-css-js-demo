@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圆形渐变边框</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      width: 350px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gradient-border {
+      border: solid 5px transparent;
+      border-radius: 10px;
+      background-image: linear-gradient(white, white),
+        linear-gradient(315deg, #833ab4, #fd1d1d 50%, #fcb045);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box gradient-border">
+      炫酷渐变边框
+    </div>
+  </div>
+</body>
+
+</html>
