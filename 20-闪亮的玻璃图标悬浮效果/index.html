@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闪亮的玻璃图标悬浮效果</title>
+  <link href="./font-awesome.min@4.7.0.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .container {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 50%;
+      z-index: 1;
+      /* 背景模糊 */
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    .container .color {
+      position: absolute;
+      /* 模糊滤镜 数值越大越模糊 */
+      filter: blur(200px);
+    }
+
+    .container .color:nth-child(1) {
+      background-color: #fd746c;
+      width: 800px;
+      height: 800px;
+      top: -450px;
+    }
+
+    .container .color:nth-child(2) {
+      background-color: #cf8bf3;
+      width: 600px;
+      height: 600px;
+      bottom: -150px;
+      left: 100px;
+    }
+
+    .container .color:nth-child(3) {
+      background-color: #fdb99b;
+      width: 400px;
+      height: 400px;
+      bottom: 50px;
+      right: 100px;
+    }
+
+    ul {
+      position: relative;
+      display: flex;
+      z-index: 2;
+    }
+
+    ul li {
+      position: relative;
+      list-style: none;
+      margin: 10px;
+    }
+
+    ul li a {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      /* 阴影 */
+      box-shadow: 0px 5px 45px rgba(0, 0, 0, 0.1);
+      /* 背景模糊 */
+      backdrop-filter: blur(2px);
+      /* 动画过渡 */
+      transition: all 0.5s;
+      overflow: hidden;
+    }
+
+    ul li a:hover {
+      /* 鼠标移入元素沿Y轴上移 */
+      transform: translateY(-20px);
+    }
+
+    ul li a::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 50px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      /* 元素沿X轴45度横切，沿X轴右移150px */
+      transform: skewX(45deg) translateX(150px);
+      /* 动画过渡 */
+      transition: all 0.5s;
+    }
+
+    ul li a:hover::before {
+      /* 元素沿X轴45度横切，沿X轴左移150px */
+      transform: skewX(45deg) translateX(-150px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="color"></div>
+    <div class="color"></div>
+    <div class="color"></div>
+    <ul>
+      <li>
+        <a href="#"><i class="fa fa-qq" aria-hidden="true"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-tencent-weibo" aria-hidden="true"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
