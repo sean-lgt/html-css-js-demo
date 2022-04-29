@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用clip-path画扇形</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #app {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .round {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      border-radius: 50%;
+      background: #0096ff;
+    }
+
+    .round-one {
+      clip-path: polygon(0% 0%, 25% 0%, 50% 50%, 0% 25%);
+    }
+
+    .round-two {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%, 0% 25%);
+    }
+
+    .round-three {
+      background: transparent;
+      box-sizing: border-box;
+      border: 30px solid #0096ff;
+      clip-path: polygon(0% 0%, 25% 0%, 50% 50%, 0% 25%);
+      animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="round round-one"></div>
+    <div class="round round-two"></div>
+    <div class="round round-three"></div>
+  </div>
+</body>
+
+</html>
