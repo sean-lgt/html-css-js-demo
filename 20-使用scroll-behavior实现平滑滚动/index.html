@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>平滑滚动</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      /* 开启平滑滚动 */
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      left: calc(50vw - 115px);
+      top: 0;
+      width: 200px;
+      text-align: center;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .2);
+    }
+
+    nav .link {
+      padding: 5px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 5em;
+      text-shadow: 0 2px 0px #b2a98f, 0px 4px 3px rgba(0, 0, 0, .15), 0px 8px 1px rgba(0, 0, 0, .1);
+    }
+
+    .bg-red {
+      background: #de5448;
+    }
+
+    .bg-blue {
+      background: #4267b2;
+    }
+
+    .bg-green {
+      background: #4CAF50;
+    }
+
+    /* 全局滚动条 */
+    ::-webkit-scrollbar {
+      width: 8px;
+      /* 纵向滚动条*/
+      height: 8px;
+      /* 横向滚动条 */
+      background-color: #fff;
+    }
+
+    /*定义滚动条轨道 内阴影*/
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+      background-color: #f2f2f2;
+      /* background-color: #ffffff; */
+      cursor: pointer;
+    }
+
+    /*定义滑块 内阴影*/
+    ::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+      background-color: #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgba(144, 147, 153, .3);
+      transition: background-color .3s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(144, 147, 153, .5)
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航点击区域 -->
+  <nav>
+    Scroll to:
+    <a href="#sectionA" class="link bg-red">A</a>
+    <a href="#sectionB" class="link bg-blue">B</a>
+    <a href="#sectionC" class="link bg-green">C</a>
+  </nav>
+  <div class="wrapper">
+    <div id="sectionA" class="section bg-red">A</div>
+    <div id="sectionB" class="section bg-blue">B</div>
+    <div id="sectionC" class="section bg-green">C</div>
+  </div>
+</body>
+
+</html>
