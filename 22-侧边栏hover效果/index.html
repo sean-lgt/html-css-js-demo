@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>侧边栏hover效果</title>
+  <style>
+    .css-dynamic-sidebar {
+      overflow: hidden;
+      position: relative;
+      height: 15em;
+      max-width: 15em;
+      margin: auto;
+    }
+
+    .site-content {
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 100%;
+      padding: 1em;
+      background-color: #f3f3f3;
+      transform: translateX(1em);
+      transition: .2s transform;
+    }
+
+    nav:hover,
+    nav:focus-within {
+      transform: translateX(100%);
+    }
+
+    a {
+      white-space: pre;
+      color: black;
+    }
+
+    p {
+      font-size: 2em;
+      font-family: monospace;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="css-dynamic-sidebar">
+    <nav>
+      <a href="#" class="">Menu #1</a>
+      <a href="#" class="">Menu #2</a>
+      <a href="#" class="">Menu #3</a>
+    </nav>
+    <div class="site-content">
+      <p>Hover over the sidebar</p>
+      <p>Also work with Tab selector (for accessibility)</p>
+    </div>
+  </div>
+</body>
+
+</html>
