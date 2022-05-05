@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片悬停旋转效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: #1F1F1F;
+    }
+
+    .wrapper {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto;
+      background: no-repeat url("https://p26-passport.byteacctimg.com/img/user-avatar/2a8d6ccfbc571fc588cf3c40657b0986~300x300.image") left top;
+      -webkit-background-size: 220px 220px;
+      -moz-background-size: 220px 220px;
+      background-size: 220px 220px;
+      -webkit-border-radius: 110px;
+      border-radius: 110px;
+      /* 兼容写法 */
+      -webkit-transition: -webkit-transform 2s ease-out;
+      -moz-transition: -moz-transform 2s ease-out;
+      -o-transition: -o-transform 2s ease-out;
+      -ms-transition: -ms-transform 2s ease-out;
+    }
+
+    .img:hover {
+      -webkit-transform: rotateZ(360deg);
+      -moz-transform: rotateZ(360deg);
+      -o-transform: rotateZ(360deg);
+      -ms-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="img"></div>
+  </div>
+
+</body>
+
+</html>
