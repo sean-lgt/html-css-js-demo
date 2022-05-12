@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料卡动画设计</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #fbda61, #ff5acd);
+    }
+
+    .card {
+      position: relative;
+      width: 350px;
+      height: 190px;
+      /* height: 450px; */
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, .15);
+      transition: .5s;
+    }
+
+    .card:hover {
+      height: 450px;
+    }
+
+    .imgbox {
+      position: absolute;
+      left: 50%;
+      top: -50px;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, .35);
+      overflow: hidden;
+      transition: .5s;
+    }
+
+    .card:hover .imgbox {
+      width: 250px;
+      height: 250px;
+    }
+
+    .imgbox img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .card .content .details {
+      padding: 40px;
+      text-align: center;
+      width: 100%;
+      transition: .5s;
+      transform: translateY(150px);
+    }
+
+    .card:hover .content .details {
+      transform: translateY(0px);
+    }
+
+    .card .content .details h2 {
+      font-size: 1.25em;
+      font-weight: 600;
+      color: #555;
+      line-height: 1.2em;
+    }
+
+    .card .content .details h2 span {
+      font-size: .75em;
+      font-weight: 500;
+      opacity: .5;
+    }
+
+    .card .content .details .data {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .card .content .details .data h3 {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.2em;
+      font-weight: 600;
+    }
+
+    .card .content .details .data h3 span {
+      font-size: .85em;
+      font-weight: 400;
+      opacity: .5;
+    }
+
+    .card .content .details .action-btn {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .card .content .details .action-btn button {
+      padding: 10px 30px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 500;
+      background: #ff5f95;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .card .content .details .action-btn button:nth-child(2) {
+      border: 1px solid #999;
+      color: #999;
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="imgbox">
+      <img src="https://img0.baidu.com/it/u=801073221,3490377023&fm=253&fmt=auto&app=138&f=JPEG?w=521&h=500" alt="">
+    </div>
+    <div class="content">
+      <div class="details">
+        <h2>Alina Smith<br><span>Senior UX/UI Designer</span></h2>
+        <div class="data">
+          <h3>342<br><span>Posts</span></h3>
+          <h3>120K<br><span>Followers</span></h3>
+          <h3>285<br><span>Following</span></h3>
+        </div>
+        <div class="action-btn">
+          <button>Follow</button>
+          <button>Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
