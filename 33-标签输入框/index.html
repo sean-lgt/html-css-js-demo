@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原生 CSS + JS 实现一个标签输入框</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      display: grid;
+      place-content: center;
+    }
+
+    .tag-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 6px;
+      width: 400px;
+      box-sizing: border-box;
+      padding: 8px 12px;
+      border: 1px solid #D9D9D9;
+      border-radius: 4px;
+      font-size: 16px;
+      line-height: 24px;
+      color: #333;
+      outline-color: #4F46E5;
+      overflow: auto;
+      cursor: text;
+    }
+
+    .tag-content:focus-within,
+    .tag-content:active {
+      outline: auto #4F46E5;
+    }
+
+    tag {
+      display: flex;
+      align-items: center;
+      padding: 4px 0 4px 8px;
+      font-size: 16px;
+      line-height: 24px;
+      background: #F5F5F5;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: default;
+    }
+
+    .tag-input {
+      flex: auto;
+      border: 0;
+      outline: 0;
+      padding: 4px 0;
+      line-height: 24px;
+      font-size: 16px;
+      -webkit-user-modify: read-write-plaintext-only;
+    }
+
+    .tag-input:only-child:empty::before {
+      content: attr(placeholder);
+      color: #828282;
+    }
+
+    .tag-close {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      background: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.578 5l2.93-3.493a.089.089 0 0 0-.068-.146h-.891a.182.182 0 0 0-.137.064l-2.417 2.88-2.416-2.88a.178.178 0 0 0-.137-.064h-.89a.089.089 0 0 0-.069.146L4.413 5l-2.93 3.493a.089.089 0 0 0 .068.146h.89a.182.182 0 0 0 .138-.064l2.416-2.88 2.417 2.88c.033.04.083.064.137.064h.89a.089.089 0 0 0 .069-.146l-2.93-3.493z' fill='%23000' fill-opacity='.45'/%3E%3C/svg%3E") center no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tag-content" class="tag-content">
+    <div class="tag-input" id="tag-input" placeholder="添加标签"></div>
+  </div>
+  <script>
+    const TagContent = document.getElementById('tag-content')
+    const TagInput = document.getElementById('tag-input')
+    // 监听tag-close点击事件，事件委托原理，因为DOM是动态生成的
+    TagContent.addEventListener('click', function(ev) {
+      if (ev.target.className === 'tag-close') {
+        ev.target.parentNode.remove() //移除整个tag元素
+      }
+      TagInput.focus()
+    })
+    // 监听键盘点击事件
+    TagInput.addEventListener('keydown', function(ev) {
+      if (ev.key === 'Enter') {
+        ev.preventDefault() //阻止默认行为
+        if (this.innerText) {
+          const tag = document.createElement('TAG')
+          tag.innerHTML = this.innerText + '<a class="tag-close"></a>'
+          this.before(tag)
+          this.innerText = ''
+        }
+      }
+      if (ev.key === 'Backspace' && !this.innerText) {
+        this.previousElementSibling ? this.previousElementSibling.remove() : '';
+      }
+    })
+  </script>
+</body>
+
+</html>
