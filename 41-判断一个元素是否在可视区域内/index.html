@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断一个元素是否在可视区域内</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container .block {
+      width: 100%;
+      height: 1000px;
+      margin-bottom: 10px;
+    }
+
+    .test-block {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #999;
+      margin-left: -100px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="block"></div>
+    <button id="btnClick">滚动后测试</button>
+    <div class="test-block" id="testBlock"></div>
+  </div>
+  <script>
+    const testBlock = document.getElementById('testBlock')
+    console.log('🚀【初始化是否在可视区域内】', isInViewPortByOffset(testBlock));
+    console.log('🚀【初始化是否在可视区域内】', isInViewPortByClientRect(testBlock));
+
+    document.getElementById('btnClick').onclick = () => {
+      console.log('🚀【滚动后是否在可视区域内】', isInViewPortByOffset(testBlock));
+      console.log('🚀【滚动后是否在可视区域内】', isInViewPortByClientRect(testBlock));
+
+    }
+
+    function isInViewPortByOffset(elm) {
+      //viewPortHeight 兼容写法
+      const viewPortHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      const offsetTop = elm.offsetTop
+      const scrollTop = document.documentElement.scrollTop
+      const top = offsetTop - scrollTop
+      return top <= viewPortHeight
+    }
+
+    function isInViewPortByClientRect(elm) {
+      const viewWidth = window.innerWidth || document.documentElement.clientWidth
+      const viewHeight = window.innerHeight || document.documentElement.clientHeight
+      const { top, right, bottom, left } = elm.getBoundingClientRect()
+      console.log(top, right, bottom, left);
+      const result = (top >= 0 && left >= 0 && right <= viewWidth && bottom <= viewHeight)
+      return result
+    }
+  </script>
+</body>
+
+</html>
