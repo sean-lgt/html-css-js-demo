@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>半透明边框效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #b4a078;
+
+    }
+
+    div {
+      padding: 12px;
+      margin: 20px auto;
+      background: #ffffff;
+      border: 10px solid hsla(0, 0%, 100%, .5);
+    }
+
+    label {
+      color: #f4f0ea;
+    }
+
+    input[id='pb']:checked~div {
+      background-clip: padding-box;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <input type="checkbox" id="pb" checked />
+    <label for="pd">padding-box(默认)</label>
+    <div>测试边框透明度，默认情况下，背景的颜色会延伸至边框下层，这意味着我们设置的透明边框会被覆盖，使用 background-clip：padding-box 来改变背景的默认行为</div>
+  </main>
+</body>
+
+</html>
