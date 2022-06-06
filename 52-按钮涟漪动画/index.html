@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>按钮点击涟漪动画效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .blue {
+      background: #2196F3;
+    }
+
+    .pink {
+      background: #E91E63;
+    }
+
+    .red {
+      background: #D50000;
+    }
+
+    .box {
+      width: 200px;
+      height: 45px;
+      text-align: center;
+      line-height: 45px;
+      display: block;
+      margin: 20px 0 0 20px;
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .set-link {
+      position: relative;
+      overflow: hidden;
+      -webkit-transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .set-link em {
+      position: absolute;
+      border-radius: 50%;
+      -webkit-transform: scale(0);
+      opacity: 0;
+      -webkit-animation: radiusRun 0.6s cubic-bezier(0, 0, 1, 1) forwards;
+    }
+
+    @-webkit-keyframes radiusRun {
+      0% {
+        -webkit-transform: scale(0);
+        opacity: 1;
+      }
+
+      100% {
+        -webkit-transform: scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a class="set-link box blue" href="#">ENTER</a>
+    <a class="set-link box pink" href="#">BUTTON</a>
+    <a class="set-link box red" href="#">WARNING</a>
+  </div>
+  <script>
+    const setResponse = (obj) => {
+
+      const getAclass = () => {
+        const tagName = document.getElementsByTagName(obj.tagName);
+        const aArr = [];
+        const pattern = eval("/" + obj.className + "/i");
+        for (let i = 0; i < tagName.length; i++) {
+
+          if (pattern.test(tagName[i].getAttribute('class'))) {
+            aArr.push(tagName[i]);
+          }
+        }
+        return aArr;
+      };
+
+      for (let i = 0; i < getAclass().length; i++) {
+        let c = true;
+        getAclass()[i].onclick = function(event) {
+          if (c) {
+            c = false;
+            const e = event;
+            const posX = e.clientX - this.offsetLeft;
+            const posY = e.clientY - (this.offsetTop - document.documentElement.scrollTop);
+            let t
+            const crEm = document.createElement('em');
+            this.appendChild(crEm);
+            const self = this;
+            const em = this.getElementsByTagName('em')[0];
+
+            em.style.background = obj.bgColor || '#fff';
+            em.style.width = this.offsetWidth + 'px';
+            em.style.height = this.offsetWidth + 'px';
+
+            em.style.left = posX - em.offsetWidth / 2 + 'px';
+            em.style.top = posY - em.offsetHeight / 2 + 'px';
+
+            t = setInterval(() => {
+              self.removeChild(em);
+              clearInterval(t);
+              c = true;
+            }, 600);
+
+          }
+        }
+      }
+    };
+
+    /******调用*******/
+    setResponse({
+      className: 'set-link', //  调用的class样式名
+      tagName: 'a', //作用在a标签名上
+      bgColor: '#fff' //涟漪背景色，默认为白色
+    });
+  </script>
+</body>
+
+</html>
