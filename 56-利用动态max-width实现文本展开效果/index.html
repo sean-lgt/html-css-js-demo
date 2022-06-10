@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用动态max-width实现文本展开效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Lato);
+
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+
+    abbr {
+      display: flex;
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      font-family: Lato, sans-serif;
+      text-decoration: none;
+    }
+
+    abbr span {
+      text-decoration: underline white;
+      transition: all 0.5s ease-in-out;
+    }
+
+    abbr span.hidden {
+      max-width: 0;
+      text-decoration: none;
+      opacity: 0;
+    }
+
+    abbr:hover span {
+      max-width: 2em;
+      text-decoration: none;
+      opacity: 1;
+
+    }
+
+    abbr:hover span.initial {
+      margin-left: 0.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <abbr data-title="Animation Comics Games">ACG</abbr>
+  <script>
+    let abbr = document.querySelector("abbr");
+    abbr.textContent = "";
+    let title = abbr.dataset.title;
+    let words = title.split(" ");
+    words.forEach(word => {
+      let [initial, ...restLetters] = word.split("");
+      let initialSpan = document.createElement("span");
+      initialSpan.textContent = initial;
+      initialSpan.className = "initial";
+      abbr.append(initialSpan);
+      restLetters.forEach(letter => {
+        let hiddenSpan = document.createElement("span");
+        hiddenSpan.textContent = letter;
+        hiddenSpan.className = "hidden";
+        abbr.append(hiddenSpan);
+      });
+    });
+  </script>
+</body>
+
+</html>
