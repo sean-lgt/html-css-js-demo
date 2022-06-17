@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标悬停后卡片上升并出现亮光特效</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box {
+      overflow: hidden;
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      background-color: pink;
+      margin: 100px auto;
+      transform: all .2s;
+    }
+
+    .box1 {
+      position: absolute;
+      left: -110%;
+      top: 0;
+      width: 300px;
+      height: 300px;
+      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+      transform: skew(-30deg);
+    }
+
+    .box:hover .box1 {
+      left: 110%;
+      transition: all .3s;
+    }
+
+    .box:hover {
+      transform: translateY(-20px);
+      box-shadow: 0 26px 40px -24px rgb(0 36 100 / 50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="box1"></div>
+  </div>
+</body>
+
+</html>
