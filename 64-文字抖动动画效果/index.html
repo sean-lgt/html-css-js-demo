@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文字抖动动画效果</title>
+</head>
+
+<body>
+  <script>
+    const strname = "欢迎观看文字抖动动画效果,所有的晦暗都留给过往，从遇见你开始，凛冬散尽，星河长明";
+    const strlen = strname.length;
+    let dstr = "";
+    let ssize = 50;
+
+    function fdiv() {
+      for (let i = 0; i < strlen; ++i) {
+        dstr = dstr + '<div id=aa' + i + ' style="font-size:20px; top:200px; left:' + ssize + 'px; position:absolute;">' + strname.charAt(i) + '</div>';
+        ssize = ssize + 22;
+      }
+      document.write(dstr);
+    }
+    fdiv();
+    const sumstr = new Array(-1, -6, -10, -15, -10, -6, -1);
+    const sublen = sumstr.length;
+    let i = 1;
+
+    function dmove() {
+      let s = "";
+      if (i != 1) { Parray(i); }
+      Larray(i);
+      ++i;
+      if (i == strlen) i = 0;
+      setTimeout("dmove()", 100);
+    }
+
+    function Parray(n) {
+      for (i1 = 1; i1 < n; ++i1) {
+        ob = document.all("aa" + (i1));
+        ob.style.top = 200 + "px";
+      }
+    }
+
+    function Larray(n) {
+      for (i2 = 0; i2 < sublen; ++i2) {
+        if ((n + i2) < strlen) {
+          ob = document.all("aa" + (n + i2));
+          ob.style.top = ((200 + sumstr[i2]) + "px");
+        }
+      }
+    }
+    dmove();
+  </script>
+  </script>
+</body>
+
+</html>
