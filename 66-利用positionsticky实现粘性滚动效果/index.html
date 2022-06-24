@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>粘性滚动效果</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      height: 100vh;
+      font-family: Lora, serif;
+      overflow-x: hidden;
+    }
+
+    .slide {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 0.2em;
+      color: white;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide h1 {
+      font-size: 250%;
+      text-shadow: 0 2px 2px black;
+    }
+
+    #slide1 {
+      background-image: url("https://i.loli.net/2019/11/23/cnKl1Ykd5rZCVwm.jpg");
+    }
+
+    #slide2 {
+      background-image: url("https://i.loli.net/2019/10/18/uXF1Kx7lzELB6wf.jpg");
+    }
+
+    #slide3 {
+      background-image: url("https://i.loli.net/2019/11/16/FLnzi5Kq4tkRZSm.jpg");
+    }
+
+    #slide4 {
+      background-image: url("https://i.loli.net/2019/10/18/buDT4YS6zUMfHst.jpg");
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <section class="slide sticky" id="slide1">
+      <h1>Pure CSS Sticky Sections</h1>
+    </section>
+    <section class="slide sticky" id="slide2">
+      <h1>Set to full page for best experience.</h1>
+    </section>
+    <section class="slide sticky" id="slide3">
+      <h1>No JavaScript Required</h1>
+    </section>
+    <section class="slide sticky" id="slide4">
+      <h1>End</h1>
+    </section>
+  </main>
+</body>
+
+</html>
