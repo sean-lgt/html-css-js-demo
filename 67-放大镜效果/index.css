@@ -1,0 +1,49 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.place {
+  width: 800px;
+  height: 300px;
+}
+
+.zoom-holder {
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 0;
+  top: 0;
+}
+
+.img_wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 4px #000;
+  z-index: 8;
+}
+
+.img_wrapper img {
+  position: absolute;
+}
+
+.zoom-img-overlay {
+  position: absolute;
+  display: none;
+  z-index: 9;
+  background-color: red;
+  opacity: 0.01;
+}
