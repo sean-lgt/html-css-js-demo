@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用动画和绝对定位实现汉堡菜单</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background: #ECEFFC;
+    }
+
+    #burger-toggle {
+      appearance: none;
+      opacity: 0;
+    }
+
+    #burger-toggle:checked~.overlay {
+      opacity: 1;
+      transform: scale(160);
+    }
+
+    #burger-toggle:checked~.burger-menu .line:nth-child(1) {
+      transform: translateY(calc(var(--burger-menu-radius) / 5)) rotate(45deg);
+    }
+
+    #burger-toggle:checked~.burger-menu .line:nth-child(2) {
+      transform: scaleX(0);
+    }
+
+    #burger-toggle:checked~.burger-menu .line:nth-child(3) {
+      transform: translateY(calc(var(--burger-menu-radius) / -5)) rotate(-45deg);
+    }
+
+    .burger-menu {
+      --burger-menu-radius: 4em;
+      position: relative;
+      z-index: 100;
+      display: block;
+      width: var(--burger-menu-radius);
+      height: var(--burger-menu-radius);
+      background: white;
+      border: solid 2px rgba(149, 166, 167, 0.4);
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+    }
+
+    .burger-menu .line {
+      position: absolute;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: rgba(43, 61, 79, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .burger-menu .line:nth-child(1) {
+      top: 30%;
+    }
+
+    .burger-menu .line:nth-child(2) {
+      top: 50%;
+    }
+
+    .burger-menu .line:nth-child(3) {
+      top: 70%;
+    }
+
+    .burger-menu .line::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2980b9;
+      transform: translateX(-100%);
+      transition: all 0.25s ease;
+    }
+
+    .burger-menu .line:nth-child(2)::after {
+      transition-delay: 0.1s;
+    }
+
+    .burger-menu .line:nth-child(3)::after {
+      transition-delay: 0.2s;
+    }
+
+    .burger-menu:hover {
+      box-shadow: 0.4px 0.4px 0.8px rgba(0, 0, 0, 0.042), 1px 1px 2px rgba(0, 0, 0, 0.061), 1.9px 1.9px 3.8px rgba(0, 0, 0, 0.075), 3.4px 3.4px 6.7px rgba(0, 0, 0, 0.089), 6.3px 6.3px 12.5px rgba(0, 0, 0, 0.108), 15px 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .burger-menu:hover .line::after {
+      transform: translateX(0);
+    }
+
+    .overlay {
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      background: rgba(40, 127, 184, 0.9);
+      border-radius: 50%;
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+      will-change: transform;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="checkbox" id="burger-toggle">
+  <label for="burger-toggle" class="burger-menu">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </label>
+  <div class="overlay"></div>
+</body>
+
+</html>
