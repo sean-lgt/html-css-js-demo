@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伪元素、层叠关系、3D变换、JS实现翻牌时钟</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .clock {
+      display: flex;
+    }
+
+    .clock .divider {
+      font-size: 66px;
+      line-height: 102px;
+      font-style: normal;
+    }
+
+    .clock .flip {
+      position: relative;
+      width: 60px;
+      height: 100px;
+      margin: 2px;
+      font-size: 66px;
+      line-height: 100px;
+      text-align: center;
+      background: white;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+      -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+    }
+
+    .clock .flip .digital::before,
+    .clock .flip .digital::after {
+      position: absolute;
+      content: attr(data-number);
+      left: 0;
+      right: 0;
+      color: white;
+      background: black;
+      overflow: hidden;
+      perspective: 160px;
+    }
+
+    .clock .flip .digital::before {
+      top: 0;
+      bottom: 50%;
+      border-bottom: 1px solid #666;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .clock .flip .digital::after {
+      top: 50%;
+      bottom: 0;
+      line-height: 0;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .clock .flip .back::before,
+    .clock .flip .front::after {
+      z-index: 1;
+    }
+
+    .clock .flip .back::after {
+      z-index: 2;
+    }
+
+    .clock .flip .front::before {
+      z-index: 3;
+    }
+
+    .clock .flip .back::after {
+      transform-origin: center top;
+      transform: rotateX(0.5turn);
+    }
+
+    .clock .flip.running .front::before {
+      transform-origin: center bottom;
+      animation: frontFlipDown 0.6s ease-in-out;
+      box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+      backface-visibility: hidden;
+    }
+
+    .clock .flip.running .back::after {
+      animation: backFlipDown 0.6s ease-in-out;
+    }
+
+    @keyframes frontFlipDown {
+      to {
+        transform: rotateX(0.5turn);
+      }
+    }
+
+    @keyframes backFlipDown {
+      to {
+        transform: rotateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="clock">
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+    <em class="divider">:</em>
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+    <em class="divider">:</em>
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+    <div class="flip">
+      <div class="digital front" data-number="0"></div>
+      <div class="digital back" data-number="1"></div>
+    </div>
+  </div>
+  <script src="./babel-standalone-4.44/babel.min.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    // Your ES6 code
+  </script>
+</body>
+
+</html>
