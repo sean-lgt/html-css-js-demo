@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单的动画弹出框效果</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <h2>Heading...</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea minima consequatur, impedit obcaecati aperiam harum odio quo officiis suscipit amet ad possimus nisi, enim maiores veritatis, esse ipsa perferendis dicta.</p>
+    </div>
+    <div class="toggle-btn"></div>
+  </div>
+
+  <script>
+    let toggleBtn = document.querySelector('.toggle-btn')
+    let container = document.querySelector('.container')
+    toggleBtn.onclick = function() {
+      container.classList.toggle('active')
+    }
+  </script>
+</body>
+
+</html>
