@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>魔术菜单指示器效果</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <ul>
+    <span id="marker"></span>
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">About Us</a>
+    </li>
+    <li>
+      <a href="#">Our Service</a>
+    </li>
+    <li>
+      <a href="#">Portfolio</a>
+    </li>
+    <li>
+      <a href="#">Team</a>
+    </li>
+    <li>
+      <a href="#">Contact</a>
+    </li>
+  </ul>
+  <script>
+    let marker = document.querySelector('#marker')
+    let item = document.querySelectorAll('ul li a')
+
+    function Indicator(e) {
+      marker.style.top = e.offsetTop + 'px'
+      marker.style.width = e.offsetWidth + 'px'
+    }
+
+    item.forEach(link => {
+      link.addEventListener('mousemove', (e) => {
+        Indicator(e.target)
+      })
+    })
+  </script>
+</body>
+
+</html>
