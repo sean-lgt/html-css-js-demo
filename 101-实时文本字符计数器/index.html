@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实时字符计数器</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Live Character Counter</h3>
+    <textarea placeholder="Write your text here..."></textarea>
+    <p>Total Characters：<span class="count">0</span></p>
+  </div>
+  <script>
+    const textarea = document.querySelector('textarea')
+    const count = document.querySelector('.count')
+    let cpLockFlag = true
+
+    function countLetters() {
+      if (!cpLockFlag) return false
+      const text = textarea.value
+      const textLength = textarea.value.length
+      count.innerHTML = `${textLength}`
+    }
+    textarea.addEventListener('compositionstart', function() {
+      console.log('🚀【中文输入开始】', );
+      cpLockFlag = false; //中文输入开始
+    });
+    textarea.addEventListener('compositionend', function() {
+      console.log('🚀【中文输入结束】', );
+      cpLockFlag = true; //中文输入结束
+      // compositionend 事件发生在 input 之后，故此需要此处调用 input 中逻辑
+      countLetters()
+    });
+    textarea.addEventListener('input', countLetters);
+  </script>
+</body>
+
+</html>
