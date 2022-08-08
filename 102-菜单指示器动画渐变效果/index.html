@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>菜单指示器动画渐变效果</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">About</a>
+    </li>
+    <li>
+      <a href="#">Protfolio</a>
+    </li>
+    <li>
+      <a href="#">Team</a>
+    </li>
+    <li>
+      <a href="#">Contact</a>
+    </li>
+    <div id="mark"></div>
+  </ul>
+
+  <script>
+    window.onload = function() {
+      const marker = document.querySelector("#mark")
+      const item = document.querySelectorAll('ul li a')
+
+      function Indicator(e) {
+        console.log('🚀【e】', e);
+        marker.style.left = e.offsetLeft + 'px'
+        marker.style.width = e.offsetWidth + 'px'
+      }
+
+      item.forEach(link => {
+        link.addEventListener('mousemove', (e) => {
+          Indicator(e.target)
+        })
+      })
+    }
+  </script>
+</body>
+
+</html>
