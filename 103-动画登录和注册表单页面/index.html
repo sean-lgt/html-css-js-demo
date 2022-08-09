@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画登录和注册表单页面</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <div class="user signinBx">
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/12969306/pexels-photo-12969306.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        </div>
+        <div class="formBx">
+          <form>
+            <h2>Sign In</h2>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <input type="submit" value="Login">
+            <p class="signup">don't have an account?<a href="#" onclick="toggleForm()">Sign up.</a></p>
+          </form>
+        </div>
+      </div>
+      <div class="user signupBx">
+        <div class="formBx">
+          <form>
+            <h2>Create an account</h2>
+            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Email Address">
+            <input type="password" placeholder="Create password">
+            <input type="password" placeholder="Confirm password">
+            <input type="submit" value="Sign Up">
+            <p class="signup">have an account?<a href="#" onclick="toggleForm()">Sign in.</a></p>
+          </form>
+        </div>
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/13008665/pexels-photo-13008665.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const container = document.querySelector('.container')
+    const section = document.querySelector('section')
+
+    function toggleForm() {
+      container.classList.toggle('active')
+      section.classList.toggle('active')
+    }
+  </script>
+
+</body>
+
+</html>
