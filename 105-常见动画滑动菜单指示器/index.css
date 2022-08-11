@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+nav {
+  position: relative;
+  display: flex;
+}
+
+nav a {
+  position: relative;
+  margin: 0 20px;
+  font-size: 2em;
+  color: #000;
+  text-decoration: none;
+}
+
+nav #marker {
+  position: absolute;
+  left: 0;
+  width: 0px;
+  height: 4px;
+  /* width: 100%; */
+  background: #000;
+  bottom: -8px;
+  transition: 0.5s;
+  border-radius: 4px;
+}
