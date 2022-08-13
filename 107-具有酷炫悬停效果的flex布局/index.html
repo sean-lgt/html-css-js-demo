@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>具有酷炫悬停效果的 CSS Flexbox</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #262626;
+    }
+
+    .container {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .container .box {
+      width: auto;
+      text-align: center;
+      line-height: 200px;
+      flex-grow: 1;
+      transition: .5s;
+      font-size: 1.2em;
+      color: #fff;
+      background: var(--bgc);
+      cursor: pointer;
+    }
+
+    .container .box:hover {
+      flex-grow: 4;
+      max-width: 100%;
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box" style="--bgc:#ff0;">Box 1</div>
+    <div class="box" style="--bgc:#9b59b6;">Box 2</div>
+    <div class="box" style="--bgc:#95a5a6;">Box 3</div>
+    <div class="box" style="--bgc:#16a085;">Box 4</div>
+    <div class="box" style="--bgc:#3498db;">Box 5</div>
+    <div class="box" style="--bgc:#e74c3c;">Box 6</div>
+    <div class="box" style="--bgc:#2980b9;">Box 7</div>
+    <div class="box" style="--bgc:#1abc9c;">Box 8</div>
+  </div>
+</body>
+
+</html>
