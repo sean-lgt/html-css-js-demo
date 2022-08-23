@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>强随机密码生成器</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f8f8f8;
+      user-select: none;
+    }
+
+    .inputBox {
+      position: relative;
+      width: 450px;
+    }
+
+    .inputBox h2 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .inputBox input {
+      position: relative;
+      width: 100%;
+      height: 60px;
+      border: none;
+      margin: 15px 0 20px;
+      background: transparent;
+      outline: none;
+      padding: 0 20px;
+      font-size: 24px;
+      letter-spacing: 2px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      color: #333;
+      box-shadow: -4px -4px 10px rgba(255, 255, 255, 1),
+        inset 4px 4px 10px rgba(0, 0, 0, 0.05),
+        inset -4px -4px 10px rgba(255, 255, 255, 1),
+        4px 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .inputBox input::placeholder {
+      letter-spacing: 0px;
+    }
+
+    .inputBox #btn {
+      position: relative;
+      cursor: pointer;
+      color: #fff;
+      background: #333;
+      font-size: 24px;
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .inputBox #btn:active {
+      background: #9c27b0;
+    }
+
+    .copy {
+      position: absolute;
+      top: 106px;
+      right: 15px;
+      cursor: pointer;
+      color: #333;
+      font-size: 24px;
+      opacity: 0.2;
+    }
+
+    .copy:hover {
+      opacity: 1;
+    }
+
+    .alertBox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #9c27b0;
+      color: #fff;
+      text-align: center;
+      font-size: 4em;
+      display: none;
+    }
+
+    .alertBox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="inputBox">
+    <h2>Random Password Generator App</h2>
+    <input type="text" name="" placeholder="Create Password" id="password" readonly="">
+    <ion-icon name="copy-outline" class="copy" onclick="copyPassword();"></ion-icon>
+    <div id="btn" onclick="getPassword()">Generator Password</div>
+  </div>
+  <div class="alertBox"></div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    const alertBox = document.querySelector('.alertBox')
+
+    function getPassword() {
+      const chars = '0123456789qwertyuiopasdfghjklzxcvbnmZXCVBNMASDFGHJKLQWERTYUIOP~!@#$%^&*(){}|:"<>?.-+';
+      const passwordLength = 16;
+      let password = ""
+      for (let i = 0; i < passwordLength; i++) {
+        const randomNumber = Math.floor(Math.random() * chars.length)
+        password += chars.substring(randomNumber, randomNumber + 1)
+      }
+
+      document.getElementById('password').value = password
+      alertBox.innerHTML = `New Password Copied:<br> ${password}`
+    }
+
+    function copyPassword() {
+      console.log('🚀【sdfafa】', );
+      const copyPassText = document.getElementById("password")
+      if (!copyPassText.value) {
+        alert('请先生成密码')
+        return false
+      }
+      copyPassText.select()
+      copyPassText.setSelectionRange(0, 9999)
+      document.execCommand('copy')
+      alertBox.classList.toggle('active')
+      setTimeout(() => {
+        alertBox.classList.toggle('active')
+      }, 2000)
+    }
+  </script>
+</body>
+
+</html>
