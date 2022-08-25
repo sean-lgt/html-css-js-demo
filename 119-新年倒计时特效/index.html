@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新年倒计时特效</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #333;
+      background: #000 url('./curtdown-bg.jpg');
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      background-blend-mode: hard-light;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      position: absolute;
+      top: 80px;
+      left: 100px;
+      right: 100px;
+      bottom: 80px;
+      background: url('./curtdown-bg.jpg');
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5),
+        0 0px 0px 100px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      font-size: 10em;
+      line-height: 0.7em;
+      color: #333;
+      margin-top: -80px;
+    }
+
+    .container h2 span {
+      display: block;
+      font-weight: 300;
+      letter-spacing: 6px;
+      font-size: 0.2em;
+    }
+
+    .countdown {
+      display: flex;
+      margin-top: 50px;
+    }
+
+    .countdown div {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      background: #333;
+      color: #fff;
+      margin: 0 15px;
+      font-size: 3em;
+      font-weight: 500;
+    }
+
+    .countdown div::before {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #ff0;
+      color: #333;
+      font-size: 0.35em;
+      line-height: 35px;
+      font-weight: 300;
+    }
+
+    .countdown div#day::before {
+      content: 'Days';
+    }
+
+    .countdown div#hour::before {
+      content: 'Hours';
+    }
+
+    .countdown div#minute::before {
+      content: 'Minutes';
+    }
+
+    .countdown div#second::before {
+      content: 'Seconds';
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>
+      <span>Countdown to New Year</span>2023
+    </h2>
+    <div class="countdown">
+      <div id="day"></div>
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+    </div>
+  </div>
+  <script>
+    const countData = new Date('2023-1-22 00:00:00').getTime()
+
+    function newYear() {
+      const now = new Date().getTime()
+      let gap = countData - now
+      let second = 1000
+      let minute = second * 60
+      let hour = minute * 60
+      let day = hour * 24
+
+      let d = Math.floor(gap / (day))
+      let h = Math.floor((gap % (day)) / (hour))
+      let m = Math.floor((gap % (hour)) / (minute))
+      let s = Math.floor((gap % (minute)) / (second))
+
+      document.getElementById('day').innerText = d
+      document.getElementById('hour').innerText = h
+      document.getElementById('minute').innerText = m
+      document.getElementById('second').innerText = d
+    }
+    window.setInterval(() => {
+      newYear()
+    }, 1000)
+  </script>
+</body>
+
+</html>
