@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>悬停光标效果改变</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    ul {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    ul li a {
+      position: relative;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 4em;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      transition: 0.1s;
+      transform: translate(-50%, -50%);
+      /* 元素的内容应该与元素的直系父元素的内容和元素的背景如何混合 */
+      pointer-events: none;
+      mix-blend-mode: difference;
+    }
+
+    ul li:hover~.cursor {
+      transform: scale(6);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Protfolio</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Contact</a></li>
+    <div class="cursor"></div>
+  </ul>
+  <script>
+    const cursor = document.querySelector('.cursor')
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.pageX + 'px'
+      cursor.style.top = e.pageY + 'px'
+    })
+  </script>
+</body>
+
+</html>
