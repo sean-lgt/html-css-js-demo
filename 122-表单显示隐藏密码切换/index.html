@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>显示隐藏密码</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f8f8f8;
+    }
+
+    .inputBox {
+      position: relative;
+      width: 400px;
+      height: 60px;
+    }
+
+    .inputBox input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      outline: none;
+      border-radius: 8px;
+      box-shadow: -4px -4px 10px rgba(255, 255, 255, 1),
+        inset 4px 4px 10px rgba(0, 0, 0, 0.05),
+        inset -4px -4px 10px rgba(255, 255, 255, 1),
+        4px 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .inputBox input::placeholder {
+      color: #ccc;
+
+    }
+
+    #toggle {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    #toggle .icon-off {
+      display: none;
+    }
+
+    #toggle.hide .icon-off {
+      display: block;
+      /* 更换 */
+    }
+
+    #toggle .icon-on {
+      display: block;
+      /* 更换 */
+    }
+
+    #toggle.hide .icon-on {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="inputBox">
+    <input type="password" name="" placeholder="Enter Password" id="password">
+    <div id="toggle" onclick="showHide()">
+      <ion-icon class="icon-off" name="eye-off-outline"></ion-icon>
+      <ion-icon class="icon-on" name="eye-outline"></ion-icon>
+    </div>
+
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    const password = document.getElementById('password')
+    const toggle = document.getElementById('toggle')
+
+    function showHide() {
+      if (password.type === 'password') {
+        password.setAttribute('type', 'text')
+        toggle.classList.add('hide')
+      } else {
+        password.setAttribute('type', 'password')
+        toggle.classList.remove('hide')
+      }
+    }
+  </script>
+</body>
+
+</html>
