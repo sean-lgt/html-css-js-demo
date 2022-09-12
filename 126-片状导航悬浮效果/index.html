@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>片状导航悬浮效果</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@alphardex/aqua.css@1.5.3/dist/aqua.min.css'>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f7f7fd;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    .nav-pill-indicator {
+      --i: 0;
+      transform: translateX(calc(100% * var(--i)));
+    }
+
+    .nav-pill-item {
+      color: var(--secondary-color-darkest);
+      transition: 0.3s;
+    }
+
+    .nav-pill-item:nth-child(1):hover~.nav-pill-indicator {
+      --i: 0;
+    }
+
+    .nav-pill-item:nth-child(2):hover~.nav-pill-indicator {
+      --i: 1;
+    }
+
+    .nav-pill-item:nth-child(3):hover~.nav-pill-indicator {
+      --i: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="p-1 text-sm bg-secondary-lighter rounded-lg shadow-md">
+    <ul class="nav-pill relative flex bg-secondary-lighter rounded-lg">
+      <li class="nav-pill-item z-1 box-border w-24 px-4 py-1 text-center rounded-lg cursor-pointer">Home</li>
+      <li class="nav-pill-item z-1 box-border w-24 px-4 py-1 text-center rounded-lg cursor-pointer">Services</li>
+      <li class="nav-pill-item z-1 box-border w-24 px-4 py-1 text-center rounded-lg cursor-pointer">About</li>
+      <li class="nav-pill-indicator absolute z-0 w-24 h-full box-border px-4 py-1 text-transparent bg-primary rounded-lg cursor-pointer duration-300"></li>
+    </ul>
+  </nav>
+</body>
+
+</html>
