@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D菜单栏效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #424345;
+    }
+
+    ul {
+      position: relative;
+      transform: skewY(-15deg);
+    }
+
+    li {
+      position: relative;
+      list-style: none;
+      width: 200px;
+      background: #3e3f46;
+      padding: 15px;
+      z-index: var(--i);
+      transition: .5s;
+      cursor: pointer;
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -40px;
+      width: 40px;
+      height: 100%;
+      background: #35383e;
+      transform-origin: right;
+      transform: skewY(45deg);
+      transition: .5s;
+    }
+
+    li::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #35383e;
+      transform-origin: bottom;
+      transform: skewX(45deg);
+      transition: .5s;
+    }
+
+    li:hover {
+      background: #33a3ee;
+      transform: translateX(50px);
+    }
+
+    li:hover::before {
+      background: #2982b9;
+    }
+
+    li:hover::after {
+      background: #1f5378;
+    }
+
+    li a {
+      text-decoration: none;
+      color: #ccc;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      transition: .5s;
+    }
+
+    li a:hover {
+      color: #fff;
+    }
+
+    li a:hover:last-child::after {
+      box-shadow: -100px 100px 20px rgba(0, 0, 0, .25);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li style="--i:6;"><a href="#">Home</a></li>
+    <li style="--i:5;"><a href="#">About</a></li>
+    <li style="--i:4;"><a href="#">Services</a></li>
+    <li style="--i:3;"><a href="#">Price</a></li>
+    <li style="--i:2;"><a href="#">Our Team</a></li>
+    <li style="--i:1;"><a href="#">Contact</a></li>
+  </ul>
+</body>
+
+</html>
