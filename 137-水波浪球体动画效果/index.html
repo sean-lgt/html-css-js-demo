@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水波浪球体动画效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 0 5px #4973ff;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .wave {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #4973ff;
+      border-radius: 50%;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .wave::after,
+    .wave::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -75%) rotate(0);
+      background-color: #000;
+    }
+
+    .wave::before {
+      border-radius: 45%;
+      background-color: rgba(255, 255, 255, 1);
+      animation: animateWave 5s linear infinite;
+    }
+
+    .wave::after {
+      border-radius: 40%;
+      background-color: rgba(255, 255, 255, .5);
+      animation: animateWave 5s linear infinite;
+    }
+
+    @keyframes animateWave {
+      0% {
+        transform: translate(-50%, -75%) rotate(0);
+      }
+
+      100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="circle">
+    <span class="wave"></span>
+  </section>
+</body>
+
+</html>
