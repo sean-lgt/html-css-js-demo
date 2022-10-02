@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex实现瀑布流布局</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    .g-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .g-queue {
+      display: flex;
+      flex-direction: column;
+      /* flex 元素在主轴方向上的初始大小 */
+      flex-basis: 24%;
+    }
+
+    .g-item {
+      position: relative;
+      width: 100%;
+      margin: 2.5% 0;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(1) {
+      height: 194px;
+      background: #8d58af;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(1)::after {
+      content: "1";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(2) {
+      height: 132px;
+      background: #7996ad;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(2)::after {
+      content: "2";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(3) {
+      height: 210px;
+      background: #acded9;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(3)::after {
+      content: "3";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(4) {
+      height: 284px;
+      background: #25c1c4;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(4)::after {
+      content: "4";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(5) {
+      height: 247px;
+      background: #8d9e56;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(5)::after {
+      content: "5";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(6) {
+      height: 335px;
+      background: #4c288b;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(6)::after {
+      content: "6";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(7) {
+      height: 310px;
+      background: #46ffdf;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(7)::after {
+      content: "7";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(8) {
+      height: 58px;
+      background: #968b66;
+    }
+
+    .g-queue:nth-child(1) .g-item:nth-child(8)::after {
+      content: "8";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(1) {
+      height: 82px;
+      background: #1d0546;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(1)::after {
+      content: "1";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(2) {
+      height: 300px;
+      background: #db7f0d;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(2)::after {
+      content: "2";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(3) {
+      height: 118px;
+      background: #ba2f7d;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(3)::after {
+      content: "3";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(4) {
+      height: 266px;
+      background: #28a534;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(4)::after {
+      content: "4";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(5) {
+      height: 147px;
+      background: #07fe19;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(5)::after {
+      content: "5";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(6) {
+      height: 212px;
+      background: #bfd4ea;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(6)::after {
+      content: "6";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(7) {
+      height: 254px;
+      background: #f95147;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(7)::after {
+      content: "7";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(8) {
+      height: 281px;
+      background: #3480db;
+    }
+
+    .g-queue:nth-child(2) .g-item:nth-child(8)::after {
+      content: "8";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(1) {
+      height: 105px;
+      background: #da8cc7;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(1)::after {
+      content: "1";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(2) {
+      height: 164px;
+      background: #90ac1e;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(2)::after {
+      content: "2";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(3) {
+      height: 235px;
+      background: #4df0d9;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(3)::after {
+      content: "3";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(4) {
+      height: 99px;
+      background: #68e36d;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(4)::after {
+      content: "4";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(5) {
+      height: 150px;
+      background: #8ea205;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(5)::after {
+      content: "5";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(6) {
+      height: 229px;
+      background: #87d7c8;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(6)::after {
+      content: "6";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(7) {
+      height: 114px;
+      background: #f35979;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(7)::after {
+      content: "7";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(8) {
+      height: 73px;
+      background: #a7e596;
+    }
+
+    .g-queue:nth-child(3) .g-item:nth-child(8)::after {
+      content: "8";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(1) {
+      height: 143px;
+      background: #38d9db;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(1)::after {
+      content: "1";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(2) {
+      height: 309px;
+      background: #ecd831;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(2)::after {
+      content: "2";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(3) {
+      height: 245px;
+      background: #2cd56b;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(3)::after {
+      content: "3";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(4) {
+      height: 136px;
+      background: #775b8e;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(4)::after {
+      content: "4";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(5) {
+      height: 340px;
+      background: #638c01;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(5)::after {
+      content: "5";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(6) {
+      height: 181px;
+      background: #53ce2d;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(6)::after {
+      content: "6";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(7) {
+      height: 262px;
+      background: #79ca71;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(7)::after {
+      content: "7";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(8) {
+      height: 183px;
+      background: #d11aa8;
+    }
+
+    .g-queue:nth-child(4) .g-item:nth-child(8)::after {
+      content: "8";
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 关键点：横向 flex 布局嵌套多列纵向flex布局 -->
+  <!-- 关键点：确定几列布局，将数据切分成几组数组，用一个大容器包裹每一组数据 -->
+  <div class="g-container">
+    <div class="g-queue">
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+    </div>
+    <div class="g-queue">
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+    </div>
+    <div class="g-queue">
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+    </div>
+    <div class="g-queue">
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+      <div class="g-item"></div>
+    </div>
+  </div>
+</body>
+
+</html>
