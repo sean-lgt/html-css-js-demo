@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建模态弹出框效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #2196f3;
+    }
+
+    .btn {
+      position: relative;
+      padding: 15px 20px;
+      background: #fff;
+      font-size: 18px;
+      display: inline-block;
+      text-decoration: none;
+      color: #03a9f4;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.5s;
+    }
+
+    .btn:hover {
+      letter-spacing: 4px;
+      /* font-weight: 600; */
+    }
+
+    #popup {
+      position: fixed;
+      top: -100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      background: #fff;
+      width: 450px;
+      padding: 80px 50px 50px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+      transition: 0.5s;
+      visibility: hidden;
+    }
+
+    #popup.active {
+      visibility: visible;
+      top: 50%;
+    }
+
+    #popup .content {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #popup .content img {
+      max-width: 80px;
+    }
+
+    #popup .content h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #333;
+      margin: 20px 0 10px;
+    }
+
+    #popup .content p {
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #popup .content .input-box {
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #popup .content .input-box input {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      outline: none;
+      font-size: 18px;
+    }
+
+    #popup .content .input-box input[type='submit'] {
+      max-width: 150px;
+      background: #03a9f4;
+      color: #fff;
+      border: none;
+
+    }
+
+    #popup .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+    }
+
+    #popup .close img {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#" class="btn" onclick="popupToggle()">Subscribe Us</a>
+  <div id="popup">
+    <div class="content">
+      <img src="./email.png" alt="" />
+      <h2>Join Our Newsletter</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita labore assumenda, nihil impedit voluptates repellat, vitae voluptas soluta voluptatibus praesentium sed quo nemo. Vitae dolor sunt enim quos, cum cupiditate.</p>
+      <div class="input-box">
+        <input type="email" name="" id="" placeholder="Enter Email" />
+      </div>
+      <div class="input-box">
+        <input type="submit" value="Sign Up" class="btn" />
+      </div>
+    </div>
+    <a href="#" class="close" onclick="popupToggle()">
+      <img src="./cancel.png" alt="">
+    </a>
+  </div>
+  <script>
+    function popupToggle() {
+      const popup = document.getElementById('popup')
+      popup.classList.toggle('active')
+    }
+  </script>
+</body>
+
+</html>
