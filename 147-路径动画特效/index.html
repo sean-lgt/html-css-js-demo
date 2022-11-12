@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clip-path 路径动画特效</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <section>
+    <div class="sec sec1">
+      <h2>Magic</h2>
+    </div>
+    <div class="sec sec2">
+      <h2>Magic</h2>
+    </div>
+    <h2>Magic</h2>
+  </section>
+
+  <script>
+    const sec1 = document.querySelector('.sec1')
+    const sec2 = document.querySelector('.sec2')
+
+    window.addEventListener('scroll', () => {
+      console.log('🚀【564】', );
+      const value = window.scrollY
+      sec1.style.clipPath = `circle(${value * 1.15}px at 0 0)`
+      sec2.style.clipPath = `circle(${value * 0.85}px at 100% 100%)`
+    })
+  </script>
+</body>
+
+</html>
