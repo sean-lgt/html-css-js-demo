@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS动画背景效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    section i {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: #222;
+      animation: animate 6s linear infinite, animateBg 5s linear infinite;
+    }
+
+    section i:nth-child(5n+1) {
+      animation: animate 2s linear infinite, animateBg 5s linear infinite;
+      animation-delay: calc(-1s * var(--i));
+    }
+
+    section i:nth-child(5n+2) {
+      animation: animate 3s linear infinite, animateBg 5s linear infinite;
+      animation-delay: calc(-1.5s * var(--i));
+    }
+
+    section i:nth-child(5n+3) {
+      animation: animate 4s linear infinite, animateBg 5s linear infinite;
+      animation-delay: calc(-2s * var(--i));
+    }
+
+    section i:nth-child(5n+4) {
+      animation: animate 5s linear infinite, animateBg 5s linear infinite;
+      animation-delay: calc(-2.5s * var(--i));
+    }
+
+    section i:nth-child(5n+5) {
+      animation: animate 6s linear infinite, animateBg 5s linear infinite;
+      animation-delay: calc(-3s * var(--i));
+    }
+
+    @keyframes animate {
+      0% {
+        background: #222;
+      }
+
+      60% {
+        background: #0f0;
+      }
+
+      80%,
+      100% {
+        background: #222;
+      }
+    }
+
+    @keyframes animateBg {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <!--  -->
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <!--  -->
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+    <i style="--i:1;"></i>
+    <i style="--i:12;"></i>
+    <i style="--i:8;"></i>
+    <i style="--i:6;"></i>
+    <i style="--i:4;"></i>
+    <i style="--i:18;"></i>
+    <i style="--i:5;"></i>
+    <i style="--i:23;"></i>
+    <i style="--i:11;"></i>
+    <i style="--i:14;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:3;"></i>
+    <i style="--i:27;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:15;"></i>
+    <i style="--i:16;"></i>
+    <i style="--i:2;"></i>
+    <i style="--i:22;"></i>
+    <i style="--i:7;"></i>
+    <i style="--i:21;"></i>
+    <i style="--i:10;"></i>
+    <i style="--i:20;"></i>
+  </section>
+</body>
+
+</html>
