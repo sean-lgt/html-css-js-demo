@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用 shape-outside 实现文字环绕效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-wrap {
+      width: 350px;
+    }
+
+    .main-wrap img {
+      float: left;
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+      border-radius: 50%;
+      object-fit: cover;
+      shape-outside: circle(50% at 50% 50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrap">
+    <img class="img" src="https://images.pexels.com/photos/16124552/pexels-photo-16124552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+    <span>很多人都喜欢诗歌，因为诗歌本来就是对循规蹈矩生活的一种反抗。少年人很少有不喜欢李白的。各种聚会时我常常背诵《侠客行》《将进酒》，以此体现自己的豪气干云，现在想想，主要动机是显摆，其实更长的《蜀道难》背不出来。随着年岁的渐长，慢慢觉得人的浪漫不能长久。人不能总是抬头看天，更要关注地上的生活。黄河之水天上来，但终究要在地上奔流不息。大鹏扶摇直上九万里，但依然要在地上休憩进食。所以，也就更喜欢杜甫的诗词。我所就读的中学原名杜陵书院，杜甫在我的家乡走完了他人生终点。据考证，安史之乱爆发，杜甫被叛军所抓，脱险后入蜀定居成都，投靠剑南节度使严武，在其幕中任检校工部员外郎。公元770年，杜甫在潭州也就是今天的长沙遭遇叛乱，准备逃往湖南郴州，投靠舅父，行舟经过耒阳方田驿，遭遇洪水，断粮多日。当时耒阳县令聂县令派人带着食物前来接济。杜甫非常感动，写了一首诗感谢聂县令。诗题曰：“聂耒阳以仆阻水，书致酒肉，疗饥荒江，诗得代怀，兴尽本韵。至县，呈聂令，陆路去方田驿四十里，舟行一日，时属江涨，泊于方田。</span>
+  </div>
+</body>
+
+</html>
