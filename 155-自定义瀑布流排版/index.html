@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义瀑布流排版布局</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      width: 100%;
+    }
+
+    .main-wrap {
+      width: 90%;
+      margin: 0 auto;
+      padding: 14px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .main-wrap img {
+      position: absolute;
+      width: 220px;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-wrap" id="mainWrap"></div>
+</body>
+
+<script>
+  // 维护图片列表
+  const imgList = [
+    "https://images.pexels.com/photos/17651789/pexels-photo-17651789.png?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17267141/pexels-photo-17267141.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16991419/pexels-photo-16991419.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17464808/pexels-photo-17464808.png?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17635762/pexels-photo-17635762/free-photo-of-35.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17533458/pexels-photo-17533458.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16739204/pexels-photo-16739204.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/14918400/pexels-photo-14918400.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/videos/17085911/4k-drone-footage-areal-footage-dji-drone-17085911.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17640285/pexels-photo-17640285.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16124552/pexels-photo-16124552.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17044199/pexels-photo-17044199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17280383/pexels-photo-17280383.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17481616/pexels-photo-17481616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17583913/pexels-photo-17583913.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17558664/pexels-photo-17558664.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/14805740/pexels-photo-14805740.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17461393/pexels-photo-17461393.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17660191/pexels-photo-17660191.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/14339510/pexels-photo-14339510.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/15652576/pexels-photo-15652576.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/14120220/pexels-photo-14120220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/15744746/pexels-photo-15744746.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16973722/pexels-photo-16973722.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17568716/pexels-photo-17568716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16745025/pexels-photo-16745025.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17479180/pexels-photo-17479180.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17530670/pexels-photo-17530670.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17640285/pexels-photo-17640285.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16124552/pexels-photo-16124552.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17044199/pexels-photo-17044199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17280383/pexels-photo-17280383.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17481616/pexels-photo-17481616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17583913/pexels-photo-17583913.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17558664/pexels-photo-17558664.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/14805740/pexels-photo-14805740.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17461393/pexels-photo-17461393.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/16855802/pexels-photo-16855802.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17295498/pexels-photo-17295498.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17044199/pexels-photo-17044199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17280383/pexels-photo-17280383.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://images.pexels.com/photos/17481616/pexels-photo-17481616.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  ]
+
+  const mainWrap = document.getElementById('mainWrap')
+  // 设置每张图片的固定宽度
+  const imgWidthDefault = 220
+
+  /**
+   * @description: 创建图片元素
+   * @return {*}
+   */
+  function createImgs() {
+    for (let i = 0; i < imgList.length; i++) {
+      const img = document.createElement('img')
+      img.style.minHeight = '200px'
+      img.style.backgroundColor = '#f6f7f8'
+      img.onload = setImgPosition
+      img.src = imgList[i]
+      mainWrap.appendChild(img) // 添加到容器中
+    }
+  }
+
+  createImgs()
+
+
+  /**
+   * @description: 计算一共有多少列，以及每一列之间的间隙
+   * @return {*}
+   */
+  function cal() {
+    const mainWrapWidth = mainWrap.clientWidth; // 容器宽度
+    const columns = Math.floor(mainWrapWidth / imgWidthDefault) // 计算列的数量
+    const spaceNumber = columns + 1 // 间隙数量
+    const leftSpace = mainWrapWidth - columns * imgWidthDefault // 剩余空间
+    const space = leftSpace / spaceNumber // 每个间隙的空间
+
+    return {
+      space,
+      columns
+    }
+  }
+
+  /**
+   * @description: 设置每一个图片所处位置
+   * @return {*}
+   */
+  function setImgPosition() {
+    const info = cal() // 得到列数和间隙
+    const nextTops = new Array(info.columns) // 该数组的长度为列数，每一项表示给列的下一个图片的纵坐标
+    nextTops.fill(0) // 将数组的每项填充为0
+    for (let i = 0; i < mainWrap.children.length; i++) {
+      let img = mainWrap.children[i]
+      // 找到nextTops中的最小值最为当前图片的纵坐标
+      let minTop = Math.min.apply(null, nextTops)
+      img.style.top = minTop + 'px'
+      // 重新设置数组这一项的下一个top值 得到使用的是第几列的top值
+      let index = nextTops.indexOf(minTop)
+      nextTops[index] += img.height + info.space
+      // 横坐标
+      let left = (index + 1) * info.space + index * imgWidthDefault
+      img.style.left = left + 'px'
+      // 恢复原来
+      // img.style.minHeight = '1px'
+      // img.style.backgroundColor = 'transparent'
+    }
+    const maxHeight = Math.max.apply(null, nextTops) // 求最大值
+    mainWrap.style.height = maxHeight + 'px' // 设置容器高度
+  }
+
+  let timerId = null // 计时器id
+  window.onresize = function() {
+    // 窗口尺寸变动后，重新排列
+    if (timerId) {
+      clearTimeout(timerId)
+    }
+    // 防抖效果
+    timerId = setTimeout(setImgPosition, 400)
+  }
+</script>
+
+</html>
