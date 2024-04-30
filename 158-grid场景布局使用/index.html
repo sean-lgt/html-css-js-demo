@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid 常见布局使用</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f6f6f5;
+      padding-bottom: 80px;
+    }
+
+    .box-section {
+      margin-top: 60px;
+
+    }
+
+    .box-section .title {
+      margin: 0 auto;
+      font-size: 16px;
+      color: #333333;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .box-section .sub-title {
+      margin: 0 auto;
+      font-size: 14px;
+      color: #999999;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .flex-section .layout {
+      width: 900px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      /* flex 两端对齐会出现最后一行排版问题 常见解决是子元素使用 margin控制*/
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .flex-section .box-item {
+      width: 150px;
+      height: 100px;
+      background: #7c9fb0;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      margin-bottom: 30px;
+    }
+
+    .gird-section .layout {
+      width: 900px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .gird-section .box-item {
+      height: 100px;
+      background-image: linear-gradient(25deg, #948bb4, #899da4, #7aae93, #65be82);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .gird-section-2 .layout {
+      width: 900px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .gird-section-2 .box-item {
+      height: 100px;
+      background-image: linear-gradient(25deg, #155f20, #29853f, #3dac5f, #52d681);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .gird-section-3 .layout {
+      /* 响应式布局 width不能写死 */
+      width: 50%;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .gird-section-3 .box-item {
+      height: 100px;
+      background-image: linear-gradient(25deg, #2456e7, #7878ed, #ac9cf2, #d8c2f6);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .gird-section-4 .layout {
+      width: 900px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .gird-section-4 .box-item {
+      height: 100px;
+      background-image: linear-gradient(25deg, #7c9bcd, #7bbadc, #76d9ea, #6bf9f9);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .gird-section-4 .box-item-1 {
+      grid-row: 1/3;
+      grid-column: 1/3;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box-section flex-section">
+    <div class="title">常见的flex布局</div>
+    <div class="sub-title">flex 两端对齐会出现最后一行排版问题 常见解决是子元素使用 margin控制</div>
+    <div class="layout">
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+    </div>
+  </div>
+  <div class="box-section gird-section">
+    <div class="title">常见的grid布局</div>
+    <div class="sub-title">grid-template-columns：1fr | px 这是将网格分为几列，1fr是自适配单位，可以当成栅格; gap:30px 这是网格四周的间隔;子元素，可以不用设置宽度，也不用设置margin间距</div>
+    <div class="layout">
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+    </div>
+  </div>
+  <div class="box-section gird-section-2">
+    <div class="title">了解grid-template-columns</div>
+    <div class="sub-title">如果4列的值相同，可以使用repeat()函数，grid-template-columns: repeat(4,1fr)</div>
+    <div class="layout">
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+    </div>
+  </div>
+  <div class="box-section gird-section-3">
+    <div class="title">grid 响应式</div>
+    <div class="sub-title">grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));auto-fill主轴上指定的宽度或者重复次数是最大可能的正整数，minmax最小值255px、最大值1fr代表剩余空间的比例。</div>
+    <div class="layout">
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+    </div>
+  </div>
+  <div class="box-section gird-section-4">
+    <div class="title">grid-row和grid-column可以控制某个元素占领几份</div>
+    <div class="sub-title">grid-row行为例，从第几列开始 / 第几列+想占几个</div>
+    <div class="layout">
+      <div class="box-item box-item-1">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+      <div class="box-item">box方块</div>
+    </div>
+  </div>
+</body>
+
+</html>
